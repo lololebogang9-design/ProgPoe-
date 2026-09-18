@@ -79,7 +79,7 @@ public class MainPoe {
                         + "and a special character.");
             }
             
-            // Checking the cell phone number
+            
             if (login.checkCellPhoneNumber()) {
                 
                 System.out.println("Cell phone number successfully added.");
@@ -106,11 +106,11 @@ public class MainPoe {
             System.out.println("Please enter your Password:");
             String loginPassword = input.nextLine();
             
-            // Checking login details
+            
             boolean loginSuccessful =
                     login.loginUser(loginUsername, loginPassword);
             
-            // Displaying login status
+           
             String loginStatus =
                     login.returnLoginStatus(loginSuccessful);
             

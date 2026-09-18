@@ -69,8 +69,14 @@ public class LoginTest {
 
     @Test
     public void testValidCellPhoneNumber() {
+        Login validCell = new Login(
+            "Lebo",
+            "Student",
+            "kyl_1",
+            "Ch&&sec@ke99!",
+            "+27838968976");
 
-        assertTrue(member.checkCellPhoneNumber());
+        assertTrue(validCell.checkCellPhoneNumber());
     }
 
     @Test

@@ -83,8 +83,8 @@ public class Login {
         return enteredUsername.equals(username)
                 && enteredPassword.equals(password);
     }
+    
 
-    // Returning the login status
     public String returnLoginStatus(boolean loginSuccessful) {
 
         if (loginSuccessful) {
