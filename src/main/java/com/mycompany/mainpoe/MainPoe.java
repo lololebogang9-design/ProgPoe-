@@ -90,7 +90,7 @@ public class MainPoe {
                         + "or does not contain international code.");
             }
             
-            // Register the user
+           
             System.out.println();
             System.out.println(login.registerUser());
             
