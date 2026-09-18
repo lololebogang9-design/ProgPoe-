@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class LoginTest {
     
-    Login member = new Login(
+    Login member = new Login( 
             "Lebo",
-            "Student",
+            "Nkadimeng",
             "kyl_1",
             "Ch&&sec@ke99!",
             "+27838968976"
@@ -32,7 +32,7 @@ public class LoginTest {
 
         Login invalidUsername = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyle !!!!!!!",
                 "Ch&&sec@ke99!",
                 "+27838968976"
@@ -48,7 +48,7 @@ public class LoginTest {
     public void testValidPassword() {
         Login validPassword = new Login( 
             "Lebo",
-            "Student",
+            "Nkadimeng",
             "kyl_1",
             "Ch&&sec@ke99!",
             "+27838968976");
@@ -61,7 +61,7 @@ public class LoginTest {
 
         Login invalidPassword = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyl_1",
                 "password",
                 "+27838968976"
@@ -77,7 +77,7 @@ public class LoginTest {
     public void testValidCellPhoneNumber() {
         Login validCell = new Login(
             "Lebo",
-            "Student",
+            "Nkadimeng",
             "kyl_1",
             "Ch&&sec@ke99!",
             "+27838968976");
@@ -90,7 +90,7 @@ public class LoginTest {
 
         Login invalidCell = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyl_1",
                 "Ch&&sec@ke99!",
                 "08966553"
@@ -135,7 +135,7 @@ public class LoginTest {
 
         Login invalidUsername = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyle !!!!!!!",
                 "Ch&&sec@ke99!",
                 "+27838968976"
@@ -154,7 +154,7 @@ public class LoginTest {
 
         Login invalidPassword = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyl_1",
                 "password",
                 "+27838968976"
@@ -173,7 +173,7 @@ public class LoginTest {
 
         Login invalidCell = new Login(
                 "Lebo",
-                "Student",
+                "Nkadimeng",
                 "kyl_1",
                 "Ch&&sec@ke99!",
                 "08966553"
@@ -197,7 +197,7 @@ public class LoginTest {
                 member.loginUser("kyl_1", "Ch&&sec@ke99!");
 
         assertEquals(
-                "Welcome Lebo Student, it is great to see you again.",
+                "Welcome Lebo Nkadimeng, it is great to see you again.",
                 member.returnLoginStatus(result)
         );
     }

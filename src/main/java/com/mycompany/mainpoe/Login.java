@@ -46,7 +46,7 @@ public class Login {
     // Checking if the cell phone number is correctly formatted
     public boolean checkCellPhoneNumber() {
 
-        // South African international format: +27 followed by 9 digits
+        
         return cellPhoneNumber.startsWith("+27") && 
                 cellPhoneNumber.length()==12;
     }
