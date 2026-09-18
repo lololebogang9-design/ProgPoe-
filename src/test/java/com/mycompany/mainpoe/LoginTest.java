@@ -46,8 +46,14 @@ public class LoginTest {
 
     @Test
     public void testValidPassword() {
+        Login validPassword = new Login( 
+            "Lebo",
+            "Student",
+            "kyl_1",
+            "Ch&&sec@ke99!",
+            "+27838968976");
 
-        assertTrue(member.checkPasswordComplexity());
+        assertTrue(validPassword.checkPasswordComplexity());
     }
 
     @Test
@@ -116,6 +122,7 @@ public class LoginTest {
 
     @Test
     public void testSuccessfulRegistration() {
+      
 
         assertEquals(
                 "User registered successfully.",
