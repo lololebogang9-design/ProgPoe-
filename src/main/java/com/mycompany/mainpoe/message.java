@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.mainpoe;
+import java.io.File;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 /**
  *
@@ -163,29 +166,60 @@ public class message {
     // Store the message in a JSON file without using arrays
     public boolean storeMessage() {
 
-    String fileName = "stored_message_" + messageID + ".json";
+    String fileName = "stored_message_";
+    String existingMessages = "";
 
-    try (FileWriter writer = new FileWriter(fileName)) {
+    try {
+        File file = new File(fileName);
 
-        writer.write("{\n");
-        writer.write("  \"messageID\": \"" + escapeJSON(messageID) + "\",\n");
-        writer.write("  \"messageNumber\": " + messageNumber + ",\n");
-        writer.write("  \"messageHash\": \"" + escapeJSON(messageHash) + "\",\n");
-        writer.write("  \"recipient\": \"" + escapeJSON(recipient) + "\",\n");
-        writer.write("  \"message\": \"" + escapeJSON(message) + "\"\n");
-        writer.write("}\n");
+        if (file.exists() && file.length() > 0) {
+            existingMessages = new String(
+                Files.readAllBytes(Paths.get(fileName))
+            ).trim();
+        }
+
+        String newMessage =
+                "  {\n"
+                + "    \"messageID\": \"" + escapeJSON(messageID) + "\",\n"
+                + "    \"messageNumber\": " + messageNumber + ",\n"
+                + "    \"messageHash\": \"" + escapeJSON(messageHash) + "\",\n"
+                + "    \"recipient\": \"" + escapeJSON(recipient) + "\",\n"
+                + "    \"message\": \"" + escapeJSON(message) + "\"\n"
+                + "  }";
+
+        if (existingMessages.isEmpty()
+                || existingMessages.equals("[]")) {
+
+            existingMessages = "[\n" + newMessage + "\n]";
+
+        } else if (existingMessages.startsWith("[")
+                && existingMessages.endsWith("]")) {
+
+            existingMessages = existingMessages.substring(
+                    0, existingMessages.length() - 1
+            );
+
+            existingMessages += ",\n" + newMessage + "\n]";
+
+        } else {
+            System.out.println(
+                    "The JSON file has an invalid format."
+            );
+            return false;
+        }
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write(existingMessages);
+        }
 
         System.out.println("Message stored in " + fileName);
         return true;
 
     } catch (IOException e) {
-
         System.out.println("Error storing message: " + e.getMessage());
         return false;
     }
-
     }
-
     private String escapeJSON(String text) {
         return text.replace("\\", "\\\\")
                 .replace("\"", "\\\"")
