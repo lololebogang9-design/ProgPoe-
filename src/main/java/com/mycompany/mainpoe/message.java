@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public class message {
     
-    public String messageID;
+   public String messageID;
     public int messageNumber;
     public String recipient;
     public String message;
@@ -164,9 +164,10 @@ public class message {
     }
 
     // Store the message in a JSON file without using arrays
-    public boolean storeMessage() {
+    
+public boolean storeMessage() {
 
-    String fileName = "stored_message_";
+    String fileName = "stored_messages_" + ".json";
     String existingMessages = "";
 
     try {
@@ -219,7 +220,10 @@ public class message {
         System.out.println("Error storing message: " + e.getMessage());
         return false;
     }
+
+
     }
+
     private String escapeJSON(String text) {
         return text.replace("\\", "\\\\")
                 .replace("\"", "\\\"")
