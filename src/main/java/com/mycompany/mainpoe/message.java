@@ -122,5 +122,49 @@ public class message {
                 + "\nMessage Hash:"+ messageHash
                 +"\nMessage:"+ message;
     }
+    public int returnTotalMessages(){
+        return totalMessagesSent; 
+    }
+     public boolean storeMessage() {
+
+    String fileName = "stored_message_" + messageID + ".json";
+
+    try (FileWriter writer = new FileWriter(fileName)) {
+
+        writer.write("{\n");
+        writer.write("  \"messageID\": \"" + escapeJSON(messageID) + "\",\n");
+        writer.write("  \"messageNumber\": " + messageNumber + ",\n");
+        writer.write("  \"messageHash\": \"" + escapeJSON(messageHash) + "\",\n");
+        writer.write("  \"recipient\": \"" + escapeJSON(recipient) + "\",\n");
+        writer.write("  \"message\": \"" + escapeJSON(message) + "\"\n");
+        writer.write("}\n");
+
+        System.out.println("Message stored in " + fileName);
+        return true;
+
+    } catch (IOException e) {
+
+        System.out.println("Error storing message: " + e.getMessage());
+        return false;
+    }
+
+    }
+
+    private String escapeJSON(String text) {
+        return text.replace("\\", "\\\\")
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r")
+                .replace("\t", "\\t");
+    }
+
+    // For unit tests
+    public static void resetTotals() {
+        messageCounter = 0;
+        totalMessagesSent = 0;
+        sentMessages = "";
+    }
+
+    
     
 }
