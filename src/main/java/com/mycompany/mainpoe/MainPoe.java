@@ -157,15 +157,16 @@ public class MainPoe {
             // ======================================
 
             while (true) {
-
                 System.out.println();
                 System.out.println("================================");
                 System.out.println("              MENU");
                 System.out.println("================================");
                 System.out.println("1. Send Messages");
                 System.out.println("2. Show recently sent messages");
-                System.out.println("3. Quit");
+                System.out.println("3. Stored Messages");
+                System.out.println("4. Quit");
                 System.out.println("Choose an option:");
+
 
                 int choice = input.nextInt();
                 input.nextLine();
@@ -269,13 +270,29 @@ public class MainPoe {
 
                 } else if (choice == 2) {
 
-                    System.out.println("Coming Soon.");
-
-                // ======================================
-                // OPTION 3: QUIT
-                // ======================================
-
+                    System.out.println("Recently sent messages:");
+                   if (message.sentMessages.length == 0) {
+                       System.out.println("No recently sent messages.");
+                } else {
+                       for (message m : message.sentMessages) {
+                           System.out.println(m.printMessages());
+                           System.out.println("-------------------------");
+                       }
+                   }
+// ======================================
+// OPTION 3: STORED MESSAGES
+// ======================================
                 } else if (choice == 3) {
+                    System.out.println("Stored Messages");
+                    message.loadStoredMessages();
+                    message.displayStoredReport();
+
+
+                // ======================================
+                // OPTION 4: QUIT
+                // ======================================
+
+                } else if (choice == 4) {
 
                     System.out.println(
                             "Thank you for using QuickChat."
@@ -285,7 +302,7 @@ public class MainPoe {
                 } else {
 
                     System.out.println(
-                            "Invalid option. Please select 1, 2 or 3."
+                            "Invalid option. Please select 1, 2, 3 or 4."
                     );
                 }
             }
@@ -300,5 +317,81 @@ public class MainPoe {
 
         input.close();
     }
-}
+            
+    
+
+    // ======================================
+    // STORED MESSAGES MENU
+    // ======================================
+
+    public static void storedMessagesMenu(Scanner input, String sender) {
+
+        message.loadStoredMessages();
+
+        while (true) {
+
+            System.out.println("\n====== STORED MESSAGES ======");
+            System.out.println("1. Display senders and recipients");
+            System.out.println("2. Display longest stored message");
+            System.out.println("3. Search by message ID");
+            System.out.println("4. Search by recipient");
+            System.out.println("5. Delete message using hash");
+            System.out.println("6. Display stored message report");
+            System.out.println("7. Back to main menu");
+            System.out.print("Choose an option: ");
+
+            int option = input.nextInt();
+            input.nextLine();
+
+            switch (option) {
+
+                case 1:
+                    message.displayStoredSendersAndRecipients(sender);
+                    break;
+
+                case 2:
+                    System.out.println(
+                        message.longestStoredMessage()
+                    );
+                    break;
+
+                case 3:
+                    System.out.print("Enter message ID: ");
+                    String id = input.nextLine();
+
+                    System.out.println(
+                        message.searchByMessageID(id)
+                    );
+                    break;
+
+                case 4:
+                    System.out.print("Enter recipient number: ");
+                    String recipient = input.nextLine();
+
+                    message.searchByRecipient(recipient);
+                    break;
+
+                case 5:
+                    System.out.print("Enter message hash: ");
+                    String hash = input.nextLine();
+
+                    System.out.println(
+                        message.deleteByHash(hash)
+                    );
+                    break;
+
+                case 6:
+                    message.displayStoredReport();
+                    break;
+
+                case 7:
+                    return;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
+    }
+
+
     
