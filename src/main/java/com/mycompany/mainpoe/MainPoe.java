@@ -296,6 +296,7 @@ public class MainPoe {
                     "You must log in successfully before using QuickChat."
             );
         }
+        
 
         input.close();
     }

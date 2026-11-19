@@ -123,30 +123,30 @@ public class message {
         return SentMessage(option);
     }
 
-    // This version makes the method easier to test
+  
     public String SentMessage(int option) {
-
         if (option == 1) {
+            MessageManager.addMessage(this, 1);
 
-            totalMessagesSent++;
+        totalMessagesSent++;
 
-            return "Message successfully sent.";
+        return "Message successfully sent.";
 
-        } else if (option == 2) {
+    } else if (option == 2) {
+        MessageManager.addMessage(this, 2);
+        return "Message disregarded.";
 
-            return "Press 0 to delete the message.";
+    } else if (option == 3) {
+        MessageManager.addMessage(this, 3);
 
-        } else if (option == 3) {
+        return "Message successfully stored.";
 
-            storeMessage();
+    } else {
 
-            return "Message successfully stored.";
-
-        } else {
-
-            return "Invalid option. Please try again.";
-        }
+        return "Invalid option. Please try again.";
     }
+}
+
 
     // Display the full details of the message
     public String printMessages() {

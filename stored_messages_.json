@@ -1,0 +1,73 @@
+[
+  {
+    "messageID": "8530630254",
+    "messageNumber": 1,
+    "messageHash": "85:1:HALOOYOU",
+    "recipient": "+27662987073",
+    "message": "haloo how are you "
+  }
+,
+  {
+    "messageID": "2534390842",
+    "messageNumber": 2,
+    "messageHash": "25:2:WHEREYOU",
+    "recipient": "+27554378586",
+    "message": "where are you "
+  }
+,
+  {
+    "messageID": "3691608131",
+    "messageNumber": 2,
+    "messageHash": "36:2:HITONIGHT",
+    "recipient": "+27718693002",
+    "message": "Hi Mike, can you join us for dinner tonight?"
+  }
+,
+  {
+    "messageID": "6373297941",
+    "messageNumber": 2,
+    "messageHash": "63:2:HITONIGHT",
+    "recipient": "+27718693002",
+    "message": "Hi Mike, can you join us for dinner tonight?"
+  }
+,
+  {
+    "messageID": "8288953520",
+    "messageNumber": 0,
+    "messageHash": "82:0:WHEREYOU",
+    "recipient": "+27662987073",
+    "message": "where are you "
+  }
+,
+  {
+    "messageID": "2158353383",
+    "messageNumber": 2,
+    "messageHash": "21:2:HITONIGHT",
+    "recipient": "+27718693002",
+    "message": "Hi Mike, can you join us for dinner tonight?"
+  }
+,
+  {
+    "messageID": "1635119524",
+    "messageNumber": 2,
+    "messageHash": "16:2:HITONIGHT",
+    "recipient": "+27718693002",
+    "message": "Hi Mike, can you join us for dinner tonight?"
+  }
+,
+  {
+    "messageID": "2378516254",
+    "messageNumber": 0,
+    "messageHash": "23:0:HIIHELLO",
+    "recipient": "+27728622426",
+    "message": "hii hello"
+  }
+,
+  {
+    "messageID": "4088415800",
+    "messageNumber": 0,
+    "messageHash": "40:0:WHERESAT",
+    "recipient": "+27725245064",
+    "message": "wheres at "
+  }
+]
