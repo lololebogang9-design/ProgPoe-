@@ -5,5 +5,26 @@
     "recipient": "+27718693002",
     "message": "Hi Mike, can you join us for dinner tonight?",
     "messageHash": "36:2:HITONIGHT"
+  },
+  {
+    "messageID": "2200942469",
+    "messageNumber": 3,
+    "recipient": "+27662987073",
+    "message": "where are you ",
+    "messageHash": "22:3:WHEREYOU"
+  },
+  {
+    "messageID": "1168996495",
+    "messageNumber": 4,
+    "recipient": "+27728622382",
+    "message": "ke tezember ",
+    "messageHash": "11:4:KETEZEMBER"
+  },
+  {
+    "messageID": "8447704143",
+    "messageNumber": 5,
+    "recipient": "+27728622382",
+    "message": "teze",
+    "messageHash": "84:5:TEZETEZE"
   }
 ]
