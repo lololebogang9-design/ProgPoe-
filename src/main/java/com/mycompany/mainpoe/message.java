@@ -247,10 +247,6 @@ public class message {
     // ======================================
     // LOAD STORED MESSAGES FROM JSON
     // ======================================
-
-    // ATTRIBUTION: reading a JSON file into an array with Gson is based on
-    // the Gson User Guide: https://github.com/google/gson/blob/main/UserGuide.md
-    // >>> Replace this with the exact source(s) you actually used. <<<
     public static void loadStoredMessages() {
 
         File file = new File(storageFile);

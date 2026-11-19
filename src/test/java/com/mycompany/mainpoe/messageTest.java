@@ -23,8 +23,7 @@ public class messageTest {
     public messageTest() {
     }
 
-    // Loads the five POE test messages before every test and uses a
-    // separate JSON file so the real stored_messages.json is not touched.
+
     @BeforeEach
     public void setUp() {
         message.resetTotals();
@@ -41,11 +40,11 @@ public class messageTest {
         message m5 = new message("1000000005", "+27838884567",
                 "Ok, I am leaving without you.");
 
-        m1.SentMessage(1);   // Sent
-        m2.SentMessage(3);   // Stored
-        m3.SentMessage(2);   // Disregard
-        m4.SentMessage(1);   // Sent
-        m5.SentMessage(3);   // Stored
+        m1.SentMessage(1);   
+        m2.SentMessage(3);   
+        m3.SentMessage(2);   
+        m4.SentMessage(1);   
+        m5.SentMessage(3);   
     }
 
     @AfterEach
@@ -54,9 +53,7 @@ public class messageTest {
         message.resetTotals();
     }
 
-    // ======================================
-    // PART 1 AND 2 TESTS (unchanged)
-    // ======================================
+    
 
     @Test
     public void testMessageID() {
@@ -191,9 +188,7 @@ public class messageTest {
         );
     }
 
-    // ======================================
-    // PART 3 TESTS (required by the brief)
-    // ======================================
+    
 
     @Test
     public void testSentMessagesArrayCorrectlyPopulated() {
@@ -263,9 +258,7 @@ public class messageTest {
         assertFalse(report.contains("Yohoooo"));
     }
 
-    // ======================================
-    // PART 3 EXTRA TESTS
-    // ======================================
+    
 
     @Test
     public void testArraysPopulatedWithCorrectCounts() {
@@ -327,7 +320,7 @@ public class messageTest {
 
     @Test
     public void testStoredMessagesReadBackFromJson() {
-        message.loadStoredMessages();   // reads the JSON file into the array
+        message.loadStoredMessages();   
 
         assertEquals(2, message.storedMessages.length);
         assertEquals("+27838884567", message.storedMessages[0].recipient);
