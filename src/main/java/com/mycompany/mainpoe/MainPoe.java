@@ -142,58 +142,90 @@ public class MainPoe {
     // OPTION 1: SEND MESSAGE
     // ======================================
 
-    private static int sendMessage(Scanner input, int entered, int limit) {
+    
+private static int sendMessage(Scanner input, int entered, int limit) {
 
-        if (entered >= limit) {
-            System.out.println("You have reached your message limit.");
-            return entered;
+    if (entered >= limit) {
+        System.out.println("You have reached your message limit.");
+        return entered;
+    }
+
+    
+    for (int i = entered; i < limit; ) {
+
+        System.out.println("\nEntering message " + (i + 1));
+
+        String recipient;
+        String text;
+
+        
+        while (true) {
+            System.out.println("Enter recipient cell number:");
+            recipient = input.nextLine().trim();
+
+            if (recipient.matches("^\\+27[0-9]{9}$")) {
+                break;
+            }
+
+            System.out.println("Invalid recipient number. Please try again.");
         }
 
-        System.out.println("Enter recipient cell number:");
-        String recipient = input.nextLine();
-        System.out.println("Enter your message:");
-        String text = input.nextLine();
+        
+        while (true) {
+            System.out.println("Enter your message:");
+            text = input.nextLine();
 
+            if (text.length() <= 250 && !text.trim().isEmpty()) {
+                break;
+            }
+
+            System.out.println("Message must contain 1-250 characters.");
+        }
+
+        
         message newMessage = new message(recipient, text);
 
-        String recipientStatus = newMessage.checkRecipientCell();
-        String lengthStatus = newMessage.checkMessageLength();
+        System.out.println("Message ID generated: "
+                + newMessage.messageID);
 
-        System.out.println(recipientStatus);
-        System.out.println(lengthStatus);
-
-        if (!recipientStatus.equals(message.RECIPIENT_OK)
-                || !lengthStatus.equals(message.LENGTH_OK)) {
-            System.out.println("Message was not sent. Please check "
-                    + "the recipient number and message.");
-            return entered;
-        }
-
-        System.out.println("Message ID generated: " + newMessage.messageID);
-        System.out.println("Message Hash: " + newMessage.messageHash);
-        System.out.println("Choose what to do with the message:");
+        System.out.println("\nChoose what to do with the message:");
         System.out.println("1. Send Message");
         System.out.println("2. Disregard Message");
         System.out.println("3. Store Message to send later");
 
-        int option = readInt(input, "Enter 1, 2 or 3:");
+        int option;
+
+        
+        while (true) {
+            option = readInt(input, "Enter 1, 2 or 3:");
+
+            if (option >= 1 && option <= 3) {
+                break;
+            }
+
+            System.out.println("Invalid option. Please choose 1, 2 or 3.");
+        }
+
+        
+        System.out.println("Message Hash: " + newMessage.messageHash);
+
         System.out.println(newMessage.SentMessage(option));
 
         if (option == 1) {
-            System.out.println();
-            System.out.println("Message Details:");
+            System.out.println("\nMessage Details:");
             System.out.println(newMessage.printMessages());
         }
 
         System.out.println("Total messages sent: "
                 + newMessage.returnTotalMessages());
 
-        
-        if (option >= 1 && option <= 3) {
-            return entered + 1;
-        }
-        return entered;
+        // Only increase after a valid message is processed
+        i++;
     }
+
+    return limit;
+}
+
 
     // ======================================
     // OPTION 2: SHOW RECENTLY SENT MESSAGES

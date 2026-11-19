@@ -328,6 +328,26 @@ public class messageTest {
                 message.storedMessages[1].message);
         assertEquals(5, message.messageHashes.length);
     }
+    
+    @Test
+    public void testHashLoop() {
+
+    for (int i = 0; i < 5; i++) {
+
+        message testMessage = new message(
+                "1234567890",
+                "+27812345678",
+                "Hello World"
+        );
+
+        String expectedHash = "12:"
+                + testMessage.messageNumber
+                + ":HELLOWORLD";
+
+        assertEquals(expectedHash, testMessage.createMessageHash());
+    }
+}
+
 }
     
 

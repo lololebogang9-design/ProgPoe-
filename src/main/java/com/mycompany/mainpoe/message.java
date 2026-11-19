@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
+import java.util.UUID;
 /**
  *
  * @author Student
@@ -63,10 +63,11 @@ public class message {
     }
 
     private static String generateMessageID() {
-        Random random = new Random();
-        long id = 1000000000L + (long) (random.nextDouble() * 9000000000L);
-        return String.valueOf(id);
-    }
+    return UUID.randomUUID().toString()
+            .replace("-", "")
+            .substring(0, 10)
+            .toUpperCase();
+}
 
     public static void setStorageFile(String fileName) {
         storageFile = fileName;
@@ -231,6 +232,14 @@ public class message {
     // ======================================
     // SAVE STORED MESSAGES TO JSON
     // ======================================
+    /*
+ // JSON Reference:
+ // Google Gson User Guide
+ // https://github.com/google/gson/blob/main/UserGuide.md
+ 
+ // Gson is used to convert Java message objects into JSON
+ // and to convert stored JSON data back into Java objects.
+ */
 
     public static void saveStoredMessages() {
 
