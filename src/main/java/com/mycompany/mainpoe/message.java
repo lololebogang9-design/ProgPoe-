@@ -19,7 +19,7 @@ import java.util.Random;
  */
 public class message {
 
-    // Status strings shared with MainPoe
+    
     public static final String RECIPIENT_OK =
             "Cell phone number successfully captured.";
     public static final String LENGTH_OK = "Message ready to send.";
@@ -33,26 +33,26 @@ public class message {
     private static int messageCounter = 0;
     private static int totalMessagesSent = 0;
 
-    // THE FIVE ARRAYS REQUIRED FOR PART 3
+    
     public static message[] sentMessages = new message[0];
     public static message[] disregardedMessages = new message[0];
     public static message[] storedMessages = new message[0];
     public static String[] messageHashes = new String[0];
     public static String[] messageIDs = new String[0];
 
-    // Not final so the unit tests can use their own file
+    
     private static String storageFile = "stored_messages.json";
 
     // ======================================
     // CONSTRUCTORS
     // ======================================
 
-    // Normal constructor: a random ID is generated
+    
     public message(String recipient, String message) {
         this(generateMessageID(), recipient, message);
     }
 
-    // Constructor with a fixed ID (used for the test data)
+    
     public message(String messageID, String recipient, String message) {
         this.messageID = messageID;
         this.messageNumber = messageCounter;
@@ -151,7 +151,7 @@ public class message {
         return updated;
     }
 
-    // Removes the first matching value; returns the array unchanged if absent
+   
     private static String[] removeValue(String[] array, String value) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(value)) {
@@ -263,7 +263,7 @@ public class message {
             message[] loaded = new Gson().fromJson(reader, message[].class);
             storedMessages = (loaded == null) ? new message[0] : loaded;
 
-            // Keep new hash numbers unique after loading old messages
+            
             for (message m : storedMessages) {
                 messageCounter = Math.max(messageCounter,
                         m.messageNumber + 1);
@@ -456,10 +456,12 @@ public class message {
                 + describeAll(storedMessages);
     }
 
-    // Report of sent and stored messages (hash, recipient, message)
+    
     public static String generateReport() {
-        return "========== MESSAGE REPORT ==========\n"
-                + "--- SENT MESSAGES ---\n" + describeAll(sentMessages)
+        return """
+               ========== MESSAGE REPORT ==========
+               --- SENT MESSAGES ---
+               """ + describeAll(sentMessages)
                 + "--- STORED MESSAGES ---\n" + describeAll(storedMessages);
     }
 

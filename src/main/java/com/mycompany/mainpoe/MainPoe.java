@@ -18,7 +18,7 @@ public class MainPoe {
         Scanner input = new Scanner(System.in);
 
 
-        // ---------- PART 1: REGISTRATION ----------
+        // --- REGISTRATION ----------
         System.out.println("======================================");
         System.out.println("        REGISTRATION AND LOGIN");
         System.out.println("======================================");
@@ -45,14 +45,14 @@ public class MainPoe {
         String registrationResult = login.registerUser();
         System.out.println(registrationResult);
 
-        // Only allow login after a successful registration
+        
         if (!registrationResult.equals("User registered successfully.")) {
             System.out.println("Please restart and register again.");
             input.close();
             return;
         }
 
-        // ---------- PART 1: LOGIN ----------
+        // ----------  LOGIN ----------
         System.out.println();
         System.out.println("======================================");
         System.out.println("              LOGIN");
@@ -69,7 +69,7 @@ public class MainPoe {
         System.out.println();
         System.out.println(login.returnLoginStatus(loginSuccessful));
 
-        // ---------- PART 2 + 3: QUICKCHAT ----------
+        
         if (loginSuccessful) {
             runQuickChat(input, login.firstName + " " + login.lastName);
         } else {
@@ -92,8 +92,7 @@ public class MainPoe {
         System.out.println("================================");
         System.out.println("Welcome to QuickChat.");
 
-        // Load saved messages BEFORE anything is stored, otherwise the
-        // JSON file would be overwritten with only the new messages.
+       
         message.loadStoredMessages();
 
         int limit = readInt(input,
@@ -141,7 +140,6 @@ public class MainPoe {
 
     // ======================================
     // OPTION 1: SEND MESSAGE
-    // Returns the updated number of messages entered
     // ======================================
 
     private static int sendMessage(Scanner input, int entered, int limit) {
@@ -190,7 +188,7 @@ public class MainPoe {
         System.out.println("Total messages sent: "
                 + newMessage.returnTotalMessages());
 
-        // Only count messages that were actually processed
+        
         if (option >= 1 && option <= 3) {
             return entered + 1;
         }
